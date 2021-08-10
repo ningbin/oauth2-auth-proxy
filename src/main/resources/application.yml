@@ -1,0 +1,27 @@
+logging.level.org.springframework.security: DEBUG
+
+spring:
+  redis:
+    host: 127.0.0.1
+    database: 0
+
+zuul:
+  routes:
+    test:
+      path: /resource/**
+      url: ${RESOURCE_SERVER}
+
+security:
+  oauth2:
+    resource:
+      filter-order: 3
+
+server:
+  port: 8443
+  ssl:
+    key-store: classpath:server-keystore.jks
+    key-store-password: 123456
+    key-alias: ServerCert_signedByCA
+    trust-store: classpath:server-truststore.jks
+    trust-store-password: 123456
+    enabled: true
